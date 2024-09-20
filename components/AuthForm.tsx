@@ -1,5 +1,6 @@
 'use client'
 import React, { FormEvent } from 'react'
+import { Input } from './ui/input'
 
 const AuthForm = ({ type }: { type: string }) => {
     const handleAuthFormSubmit = (e: FormEvent) => {
@@ -9,10 +10,15 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <button type='submit'>
-                {type === "sign-in" ? "SignIn" :
-                    `${type === "sign-up" ? "SignUp" : null}`}
-            </button>
+            <div className='container max-w-md '>
+                <Input />
+
+                <button type='submit'>
+                    {type === "sign-in" ? "SignIn" :
+                        `${type === "sign-up" ? "SignUp" : null}`}
+                </button>
+            </div>
+
         </form>
     )
 }
