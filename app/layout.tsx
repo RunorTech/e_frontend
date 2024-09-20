@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { PageProvider } from "./PageContext";
-import { Html, Main, NextScript, Head } from 'next/document';
+import { Html, Head } from 'next/document';
 
 
 const poppins = Poppins({
@@ -31,8 +31,6 @@ export default function RootLayout({
       </Head>
       <body className={poppins.className}>
         <PageProvider>
-          <Main />
-          <NextScript />
           {children}
         </PageProvider>
       </body>
