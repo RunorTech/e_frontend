@@ -6,17 +6,25 @@ export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className,name, type, ...props }, ref) => {
     return (
+    <fieldset  className={cn(
+          "  justify-center border border-input px-2 pb-2 rounded-md shadow-md",
+          className
+        )}>
+      <legend className="text-black px-2 pr-4">{name}</legend>
+      <label htmlFor={name}>
       <input
         type={type}
         className={cn(
-          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+          " input-style outline-none   ",
           className
         )}
         ref={ref}
         {...props}
       />
+      </label>
+    </fieldset>
     )
   }
 )
