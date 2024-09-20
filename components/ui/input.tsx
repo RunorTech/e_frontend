@@ -12,10 +12,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const [seePassword, setSeePassword] = React.useState(false);
     return (
       <fieldset className={cn(
-        "  justify-center border border-input px-2 pb-2 rounded-md shadow-md",
+        "  justify-center border border-input px-2 pb-2 rounded-md shadow-md shadow-slate-400 dark:shadow-sm ",
         className
       )}>
-        <legend className="text-black px-2 pr-4">{`${name}:`}</legend>
+        <legend className=" px-2 pr-4">{`${name}:`}</legend>
         <label htmlFor={name}>
           <div className="flex items-center">
             <input
@@ -27,7 +27,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               ref={ref}
               {...props}
             />
-            <div className="text-black">
+            <div>
               {type === "password" ? <div
               onClick={() => {
                 setSeePassword((prev) => !prev)

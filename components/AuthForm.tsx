@@ -3,7 +3,7 @@ import React, { FormEvent } from 'react'
 import { Input } from './ui/input'
 import Link from 'next/link'
 
-export const FacebookSvg = ({w,h} : Size) => {
+export const FacebookSvg = ({ w, h }: Size) => {
     return (
         <>
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width={w} height={h} viewBox="0 0 48 48">
@@ -31,12 +31,14 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md '>
+            <div className='container max-w-md flex flex-col  space-y-6'>
 
-                <div>
-                    <Input required type="email" name="Email" placeholder="Enter your email" />
-                    <Input required type="password" name="Password" placeholder="Enter your password" />
-                    {/* <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> */}
+                <div className=''>
+                    <div className='h-full flex flex-col space-y-4 '>
+                        <Input required type="email" name="Email" placeholder="Enter your email" />
+                        <Input required type="password" name="Password" placeholder="Enter your password" />
+                        {/* <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> */}
+                    </div>
 
                     <div className='text-lime-700 hover:underline underline-offset-4 mt-3 text-right'>
                         <Link href="/forget-password">Forget Password?</Link>
@@ -48,15 +50,19 @@ const AuthForm = ({ type }: { type: string }) => {
                             `${type === "sign-up" ? "SignUp" : null}`}
                     </button>
                 </div>
-                <div className='text-black'>
+                <div className='text-black h-44 flex flex-col  justify-between '>
 
                     <fieldset className='text-center mt-4 border-t-2 border-slate-500 '>
                         <legend className='px-2 text-slate-700'>Or Login with</legend>
                     </fieldset>
 
-                    <div className='flex w-full justify-between space-x-4  '>
+                    <div className='flex w-full justify-between space-x-4 mt-2 '>
                         <button className='button-style-platforms'><span><GoogleSvg w={20} h={20} /></span><span className='text-slate-800'>Google</span></button>
-                        <button className='button-style-platforms'><span><FacebookSvg w={20} h={20}/></span><span className='text-slate-800'>Facebook</span></button>
+                        <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className='text-slate-800'>Facebook</span></button>
+                    </div>
+
+                    <div className='mt-2'>
+                        <p className='text-slate-700'>Don't have an account? <Link href="/sign-up"><span className='text-lime-700'>Register</span></Link></p>
                     </div>
                 </div>
             </div>
