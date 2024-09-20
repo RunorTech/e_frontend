@@ -31,7 +31,7 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md flex flex-col '>
+            <div className='container max-w-md flex flex-col py-2'>
 
                 <div className=''>
                     <div className='h-full flex flex-col gap-4 '>
@@ -56,7 +56,7 @@ const AuthForm = ({ type }: { type: string }) => {
                         <legend className='px-2 text-slate-500'>Or Login with</legend>
                     </fieldset>
 
-                    <div className='flex w-full justify-between space-x-4 mt-2 '>
+                    <div className='flex w-full justify-between  gap-4 mt-2 '>
                         <button className='button-style-platforms '><span><GoogleSvg w={20} h={20} /></span><span className=''>Google</span></button>
                         <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className=''>Facebook</span></button>
                     </div>
