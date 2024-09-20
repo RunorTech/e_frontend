@@ -20,7 +20,7 @@ const SignIn = () => {
 
         </div>
       </div>
-      <footer className='  bg-[#000223] text-center w-full relative bottom-0 py-6'>
+      <footer className=' text-white bg-[#000223] text-center w-full relative bottom-0 py-6'>
         footer
       </footer>
     </section>
