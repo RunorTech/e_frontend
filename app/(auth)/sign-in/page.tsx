@@ -22,9 +22,6 @@ const SignIn = () => {
 
         </div>
       </div>
-      <footer className=' text-white bg-[#000223]  w-full relative bottom-0 py-4'>
-        <div className='flex items-center justify-center gap-2'>Copyright <span><FaRegCopyright/></span> {date}</div>
-      </footer>
     </section>
   )
 }
