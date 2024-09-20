@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
        <Head>
-        <meta name="theme-color" content="#4CAF50" /> {/* Add this line */}
+        <meta name="theme-color" content="#32CD32" /> {/* Add this line */}
       </Head>
       <body className={poppins.className}>
       <PageProvider>
