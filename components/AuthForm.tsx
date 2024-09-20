@@ -31,7 +31,7 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md flex flex-col gap-[40px]'>
+            <div className='container max-w-md flex flex-col gap-[30px] max-sm:gap-0'>
 
                 <div className=''>
                     <div className='h-full flex flex-col gap-4 mb-9 '>
