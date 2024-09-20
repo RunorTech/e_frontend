@@ -1,10 +1,9 @@
-"use client"
 export const dynamic = 'force-dynamic'
-import type { Metadata } from "next";
+import type { Metadata, Viewport  } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { PageProvider } from "./PageContext";
-import { Html, Head } from 'next/document';
+
 
 
 const poppins = Poppins({
@@ -18,23 +17,26 @@ export const metadata: Metadata = {
   description: "online store for everyone",
 };
 
+export const viewport: Viewport = {
+  themeColor: '#32CD32',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <Html lang="en">
-      <Head>
-        <meta name="theme-color" content="#32CD32" /> {/* Add this line */}
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      </Head>
+    <html lang="en">
       <body className={poppins.className}>
         <PageProvider>
           {children}
         </PageProvider>
       </body>
-    </Html>
+    </html>
   );
 }
+
+
+{/* <meta name="apple-mobile-web-app-capable" content="yes" /> */}
+{/* <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> */}
