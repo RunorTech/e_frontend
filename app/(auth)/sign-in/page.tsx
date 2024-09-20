@@ -1,7 +1,9 @@
 import React from 'react'
 import AuthForm from '@/components/AuthForm'
+import { FaRegCopyright } from "react-icons/fa";
 
 const SignIn = () => {
+  const date = new Date().getFullYear();
   return (
     <section className='  w-screen h-screen sm:flex sm:items-center '>
       <div className=" container mx-auto  ">
@@ -20,8 +22,8 @@ const SignIn = () => {
 
         </div>
       </div>
-      <footer className=' text-white bg-[#000223] text-center w-full relative bottom-0 py-6'>
-        footer
+      <footer className=' text-white bg-[#000223]  w-full relative bottom-0 py-4'>
+        <div className='flex items-center justify-center gap-2'>Copyright <span><FaRegCopyright/></span> {date}</div>
       </footer>
     </section>
   )

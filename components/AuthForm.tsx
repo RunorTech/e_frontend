@@ -31,7 +31,7 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md flex flex-col gap-2'>
+            <div className='container max-w-md flex flex-col '>
 
                 <div className=''>
                     <div className='h-full flex flex-col gap-4 '>
@@ -50,7 +50,7 @@ const AuthForm = ({ type }: { type: string }) => {
                             `${type === "sign-up" ? "SignUp" : null}`}
                     </button>
                 </div>
-                <div className=' h-44 flex flex-col justify-between '>
+                <div className=' h-40 flex flex-col justify-between '>
 
                     <fieldset className='text-center mt-4 border-t-2 border-slate-500 '>
                         <legend className='px-2 text-slate-500'>Or Login with</legend>
