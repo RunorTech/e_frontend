@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { PageProvider } from "./PageContext";
-import Head from 'next/head';  
+import { Html, Main, NextScript, Head } from 'next/document';
 
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: [ "100", '200' , '300',  '400', '500', '600', '700', '800', '900'],
+  weight: ["100", '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-poppins'
 })
 
@@ -23,17 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-       <Head>
+    <Html lang="en">
+      <Head>
         <meta name="theme-color" content="#32CD32" /> {/* Add this line */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
       <body className={poppins.className}>
-      <PageProvider>
-      {children}
-      </PageProvider>
+        <PageProvider>
+          <Main />
+          <NextScript />
+          {children}
+        </PageProvider>
       </body>
-    </html>
+    </Html>
   );
 }
