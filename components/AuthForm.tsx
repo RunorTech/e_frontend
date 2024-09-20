@@ -34,16 +34,19 @@ const AuthForm = ({ type }: { type: string }) => {
             <div className='container max-w-md flex flex-col py-2'>
 
                 <div className=''>
-                    <div className='h-full flex flex-col gap-4 '>
+                    <div className='h-full flex flex-col gap-4 mb-6 '>
+
                         <Input required type="email" name="Email" placeholder="Enter your email" />
                         <Input required type="password" name="Password" placeholder="Enter your password" />
-                        {/* <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> */}
+                        {type === "sign-up" ? <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> : null}
+                        {/*  */}
                     </div>
 
-                    <div className='text-lime-500 hover:underline underline-offset-4 mt-6 text-right'>
-                        <Link href="/forget-password">Forget Password?</Link>
-                    </div>
-
+                    {type === "sign-in" ?
+                        <div className='text-lime-500 hover:underline underline-offset-4 text-right'>
+                            <Link href="/forget-password">Forget Password?</Link>
+                        </div>
+                        : null}
 
                     <button className='bg-lime-500 w-full text-white  px-4 py-2 mt-4 rounded-md text-xl font-semibold ' type='submit'>
                         {type === "sign-in" ? "SignIn" :
@@ -53,7 +56,7 @@ const AuthForm = ({ type }: { type: string }) => {
                 <div className=' h-40 flex flex-col justify-between '>
 
                     <fieldset className='text-center mt-4 border-t-2 border-slate-500 '>
-                        <legend className='px-2 text-slate-500'>Or Login with</legend>
+                        <legend className='px-2 text-slate-500'>{type === "sign-in" ? "Or Login with" : "Or Sign Up with"}</legend>
                     </fieldset>
 
                     <div className='flex w-full justify-between  gap-4 mt-2 '>
@@ -62,7 +65,7 @@ const AuthForm = ({ type }: { type: string }) => {
                     </div>
 
                     <div className='mt-2'>
-                        <p className='text-slate-500'>Don't have an account? <Link href="/sign-up"><span className='text-lime-500'>Register</span></Link></p>
+                        {type === "sign-in" ? <p className='text-slate-500'>Don't have an account? <Link href="/sign-up"><span className='text-lime-500'>Register</span></Link></p> : <p className='text-slate-500'>Already have an account? <Link href="/sign-in"><span className='text-lime-500'>SignIn</span></Link></p>}
                     </div>
                 </div>
             </div>
