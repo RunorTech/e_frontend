@@ -1,7 +1,7 @@
 import { Viewport } from "next";
 
 export const viewport: Viewport = {
-  themeColor: '#000223',
+  themeColor: '#131630dc',
 }
 
 export default async function RootLayout({
