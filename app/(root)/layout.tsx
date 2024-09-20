@@ -8,7 +8,7 @@ export default async function RootLayout({
 
   return (
     <>
-      {children}
+      <main>{children}</main>
     </>
   );
 }

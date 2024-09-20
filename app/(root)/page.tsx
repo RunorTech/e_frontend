@@ -2,6 +2,7 @@
 
 export default function Home() {
   return (
-    <h1 className="font-bold text-teal-400 ">my home page</h1>
+  <>  <h1 className="">my home page</h1>
+    <a href="/sign-in">signin</a></>
   );
 }

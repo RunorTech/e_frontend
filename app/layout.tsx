@@ -19,6 +19,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: '#32CD32',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
@@ -36,7 +40,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-{/* <meta name="apple-mobile-web-app-capable" content="yes" /> */}
-{/* <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> */}
