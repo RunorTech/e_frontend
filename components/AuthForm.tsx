@@ -31,16 +31,16 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md flex flex-col  space-y-6'>
+            <div className='container max-w-md flex flex-col gap-4'>
 
                 <div className=''>
-                    <div className='h-full flex flex-col space-y-4 '>
+                    <div className='h-full flex flex-col gap-4 '>
                         <Input required type="email" name="Email" placeholder="Enter your email" />
                         <Input required type="password" name="Password" placeholder="Enter your password" />
                         {/* <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> */}
                     </div>
 
-                    <div className='text-lime-500 hover:underline underline-offset-4 mt-3 text-right'>
+                    <div className='text-lime-500 hover:underline underline-offset-4 mt-6 text-right'>
                         <Link href="/forget-password">Forget Password?</Link>
                     </div>
 
@@ -50,7 +50,7 @@ const AuthForm = ({ type }: { type: string }) => {
                             `${type === "sign-up" ? "SignUp" : null}`}
                     </button>
                 </div>
-                <div className=' h-44 flex flex-col  justify-between '>
+                <div className=' h-44 flex flex-col justify-between '>
 
                     <fieldset className='text-center mt-4 border-t-2 border-slate-500 '>
                         <legend className='px-2 text-slate-500'>Or Login with</legend>
