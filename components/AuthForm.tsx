@@ -31,14 +31,14 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md flex flex-col gap-[30px] max-sm:gap-0'>
+            <div className='container max-w-md flex flex-col gap-[30px] max-sm:gap-[20px]'>
 
                 <div className=''>
                     <div className='h-full flex flex-col gap-4 mb-9 '>
 
                         <Input required type="email" name="Email" placeholder="Enter your email" />
                         <Input required type="password" name="Password" placeholder="Enter your password" />
-                        {type === "sign-up" ? <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> : null}
+                        {type === "sign-up" || "forget-password" ? <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> : null}
                         {/*  */}
                     </div>
 
@@ -50,7 +50,7 @@ const AuthForm = ({ type }: { type: string }) => {
 
                     <button className='bg-lime-500 w-full text-white  px-4 py-2 rounded-md text-xl font-semibold ' type='submit'>
                         {type === "sign-in" ? "SignIn" :
-                            `${type === "sign-up" ? "SignUp" : null}`}
+                            `${type === "sign-up" ? "SignUp" : `${type === "forget-password" ? "Reset Password" : null}`}`}
                     </button>
                 </div>
                 <div className=' h-40 flex flex-col justify-between'>
