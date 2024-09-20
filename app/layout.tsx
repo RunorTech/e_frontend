@@ -26,6 +26,8 @@ export default function RootLayout({
     <html lang="en">
        <Head>
         <meta name="theme-color" content="#32CD32" /> {/* Add this line */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       </Head>
       <body className={poppins.className}>
       <PageProvider>
