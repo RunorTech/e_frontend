@@ -31,10 +31,10 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md flex flex-col py-2'>
+            <div className='container max-w-md flex flex-col gap-[40px]'>
 
                 <div className=''>
-                    <div className='h-full flex flex-col gap-4 mb-6 '>
+                    <div className='h-full flex flex-col gap-4 mb-9 '>
 
                         <Input required type="email" name="Email" placeholder="Enter your email" />
                         <Input required type="password" name="Password" placeholder="Enter your password" />
@@ -43,28 +43,28 @@ const AuthForm = ({ type }: { type: string }) => {
                     </div>
 
                     {type === "sign-in" ?
-                        <div className='text-lime-500 hover:underline underline-offset-4 text-right'>
+                        <div className='text-lime-500 hover:underline underline-offset-4 mb-3 text-right'>
                             <Link href="/forget-password">Forget Password?</Link>
                         </div>
                         : null}
 
-                    <button className='bg-lime-500 w-full text-white  px-4 py-2 mt-4 rounded-md text-xl font-semibold ' type='submit'>
+                    <button className='bg-lime-500 w-full text-white  px-4 py-2 rounded-md text-xl font-semibold ' type='submit'>
                         {type === "sign-in" ? "SignIn" :
                             `${type === "sign-up" ? "SignUp" : null}`}
                     </button>
                 </div>
-                <div className=' h-40 flex flex-col justify-between '>
+                <div className=' h-40 flex flex-col justify-between'>
 
-                    <fieldset className='text-center mt-4 border-t-2 border-slate-500 '>
+                    <fieldset className='text-center border-t-2 border-slate-500 '>
                         <legend className='px-2 text-slate-500'>{type === "sign-in" ? "Or Login with" : "Or Sign Up with"}</legend>
                     </fieldset>
 
-                    <div className='flex w-full justify-between  gap-4 mt-2 '>
+                    <div className='flex w-full justify-between  gap-4 '>
                         <button className='button-style-platforms '><span><GoogleSvg w={20} h={20} /></span><span className=''>Google</span></button>
                         <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className=''>Facebook</span></button>
                     </div>
 
-                    <div className='mt-2'>
+                    <div className=''>
                         {type === "sign-in" ? <p className='text-slate-500'>Don't have an account? <Link href="/sign-up"><span className='text-lime-500'>Register</span></Link></p> : <p className='text-slate-500'>Already have an account? <Link href="/sign-in"><span className='text-lime-500'>SignIn</span></Link></p>}
                     </div>
                 </div>
