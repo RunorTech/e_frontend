@@ -53,16 +53,16 @@ const AuthForm = ({ type }: { type: string }) => {
                 <div className='text-black h-44 flex flex-col  justify-between '>
 
                     <fieldset className='text-center mt-4 border-t-2 border-slate-500 '>
-                        <legend className='px-2 text-slate-700'>Or Login with</legend>
+                        <legend className='px-2 text-slate-500'>Or Login with</legend>
                     </fieldset>
 
                     <div className='flex w-full justify-between space-x-4 mt-2 '>
-                        <button className='button-style-platforms'><span><GoogleSvg w={20} h={20} /></span><span className='text-slate-800'>Google</span></button>
-                        <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className='text-slate-800'>Facebook</span></button>
+                        <button className='button-style-platforms'><span><GoogleSvg w={20} h={20} /></span><span className='text-slate-500'>Google</span></button>
+                        <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className='text-slate-500'>Facebook</span></button>
                     </div>
 
                     <div className='mt-2'>
-                        <p className='text-slate-700'>Don't have an account? <Link href="/sign-up"><span className='text-lime-700'>Register</span></Link></p>
+                        <p className='text-slate-500'>Don't have an account? <Link href="/sign-up"><span className='text-lime-500'>Register</span></Link></p>
                     </div>
                 </div>
             </div>
