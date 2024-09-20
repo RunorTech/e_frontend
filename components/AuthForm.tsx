@@ -40,25 +40,25 @@ const AuthForm = ({ type }: { type: string }) => {
                         {/* <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> */}
                     </div>
 
-                    <div className='text-lime-700 hover:underline underline-offset-4 mt-3 text-right'>
+                    <div className='text-lime-500 hover:underline underline-offset-4 mt-3 text-right'>
                         <Link href="/forget-password">Forget Password?</Link>
                     </div>
 
 
-                    <button className='bg-lime-500 w-full  px-4 py-2 mt-4 rounded-md text-xl font-semibold ' type='submit'>
+                    <button className='bg-lime-500 w-full text-white  px-4 py-2 mt-4 rounded-md text-xl font-semibold ' type='submit'>
                         {type === "sign-in" ? "SignIn" :
                             `${type === "sign-up" ? "SignUp" : null}`}
                     </button>
                 </div>
-                <div className='text-black h-44 flex flex-col  justify-between '>
+                <div className=' h-44 flex flex-col  justify-between '>
 
                     <fieldset className='text-center mt-4 border-t-2 border-slate-500 '>
                         <legend className='px-2 text-slate-500'>Or Login with</legend>
                     </fieldset>
 
                     <div className='flex w-full justify-between space-x-4 mt-2 '>
-                        <button className='button-style-platforms'><span><GoogleSvg w={20} h={20} /></span><span className='text-slate-500'>Google</span></button>
-                        <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className='text-slate-500'>Facebook</span></button>
+                        <button className='button-style-platforms '><span><GoogleSvg w={20} h={20} /></span><span className=''>Google</span></button>
+                        <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className=''>Facebook</span></button>
                     </div>
 
                     <div className='mt-2'>
