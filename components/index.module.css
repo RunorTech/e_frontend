@@ -1,0 +1,5 @@
+.glassmorphisim{
+    background: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(16.6px);
+    -webkit-backdrop-filter: blur(16.6px);
+    }
