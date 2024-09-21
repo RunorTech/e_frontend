@@ -1,6 +1,8 @@
+
 import React from 'react'
 import styles from "@/components/index.module.css"
 import { RiSearch2Line } from 'react-icons/ri'
+import { GiHamburgerMenu } from 'react-icons/gi';
 export const HomeLogo = ({ w, h }: Size) => {
     return (
         <>
@@ -12,25 +14,27 @@ export const HomeLogo = ({ w, h }: Size) => {
 }
 
 const NavBar = () => {
+  
+
     return (
         <header className={`${styles.glassmorphisim} h-full p-2  shadow-md shadow-neutral-500 relative `}>
             <nav>
                 <div id="mobile-nav">
-                  <div className='flex justify-between items-center'>
-                  <div className='flex items-center gap-1'>
-                        <HomeLogo w={40} h={40} /><span>WeCOMMERCE</span>
+                    <div className='flex justify-between items-center'>
+                        <div className='flex items-center gap-1'>
+                            <HomeLogo w={40} h={40} /><span>WeCOMMERCE</span>
+                        </div>
+                        <div className='text-2xl'>
+                          <GiHamburgerMenu/>
+                        </div>
                     </div>
-                    <div>
-                        menu
-                    </div>
-                  </div>
                     <div className=" flex items-center w-full justify-between max-w-sm border rounded-md focus-within:shadow-md focus-within:shadow-neutral-400">
                         <div className="text-lg min-w-[50px] h-8 bg-lime-400 flex items-center justify-center rounded-1-md text-white">
                             <RiSearch2Line />
                         </div>
                         <input type="text" placeholder="search items here" className="w-full outline-none bg-transparent  pl-2" />
                     </div>
-                   
+
                 </div>
             </nav>
         </header>
