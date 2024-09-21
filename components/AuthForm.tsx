@@ -2,6 +2,7 @@
 import React, { FormEvent, useState } from 'react'
 import { Input } from './ui/input'
 import Link from 'next/link'
+import axios from 'axios'
 
 export const FacebookSvg = ({ w, h }: Size) => {
     return (
@@ -41,7 +42,7 @@ const AuthForm = ({ type }: { type: string }) => {
         })
     }
 
-    const handleAuthFormSubmit = (e: FormEvent) => {
+    const handleAuthFormSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
         switch (type) {
@@ -49,7 +50,13 @@ const AuthForm = ({ type }: { type: string }) => {
                 console.log("sign-in")
                 break;
             case "sign-up":
-                console.log("sign-up")
+               try {
+                const stringifyFormData = JSON.stringify(formData)
+                const response = await axios.post('http://localhost:8000/sign-up', stringifyFormData);
+                console.log(response);
+               } catch (error) {
+                console.log(error);
+               }
                 break;
             case "forget-password":
                 console.log("forget-password")
