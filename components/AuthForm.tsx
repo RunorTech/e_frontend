@@ -1,5 +1,5 @@
 'use client'
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Input } from './ui/input'
 import Link from 'next/link'
 
@@ -7,7 +7,7 @@ export const FacebookSvg = ({ w, h }: Size) => {
     return (
         <>
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width={w} height={h} viewBox="0 0 48 48">
-                <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"></stop><stop offset="1" stop-color="#007ad9"></stop></linearGradient><path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path><path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
+                <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#2aa4f4"></stop><stop offset="1" stopColor="#007ad9"></stop></linearGradient><path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path><path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
             </svg>
         </>
     )
@@ -24,21 +24,52 @@ export const GoogleSvg = ({ w, h }: Size) => {
 }
 
 const AuthForm = ({ type }: { type: string }) => {
-    const handleAuthFormSubmit = (e: FormEvent) => {
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        confirmPassword: ""
+    });
 
+    const { email, password, confirmPassword } = formData;
+
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+
+        setFormData({
+            ...formData,
+            [name]: value,
+        })
+    }
+
+    const handleAuthFormSubmit = (e: FormEvent) => {
         e.preventDefault()
+
+        switch (type) {
+            case "sign-in":
+                console.log("sign-in")
+                break;
+            case "sign-up":
+                console.log("sign-up")
+                break;
+            case "forget-password":
+                console.log("forget-password")
+                break;
+            default:
+                break;
+        }
     }
 
     return (
-        <form onSubmit={handleAuthFormSubmit}>
-            <div className='container max-w-md flex flex-col gap-[30px] max-sm:gap-[20px]'>
 
+        <div className='container max-w-md flex flex-col gap-[30px] max-sm:gap-[20px]'>
+            <form onSubmit={handleAuthFormSubmit}>
                 <div className=''>
                     <div className='h-full flex flex-col gap-4 mb-9 '>
 
-                        <Input required type="email" name="Email" placeholder="Enter your email" />
-                        <Input required type="password" name="Password" placeholder="Enter your password" />
-                        {type === "sign-up" || "forget-password" ? <Input required type="password" name="Confirm Password" placeholder="Confirm your password" /> : null}
+                        <Input value={email} label='Email' onChange={handleOnChange} required type="email" name="email" placeholder="Enter your email" />
+                        <Input value={password} label='Password' onChange={handleOnChange} required type="password" name="password" placeholder="Enter your password" />
+                        {type === "sign-up" ? <Input value={confirmPassword} label='Confirm Password' onChange={handleOnChange} required type="password" name="confirmPassword" placeholder="Confirm your password" />
+                         : type ===  "forget-password" ? <Input value={confirmPassword} label='Confirm New Password' onChange={handleOnChange} required type="password" name="confirmPassword" placeholder="Confirm your new password" /> : null}
                         {/*  */}
                     </div>
 
@@ -53,24 +84,25 @@ const AuthForm = ({ type }: { type: string }) => {
                             `${type === "sign-up" ? "SignUp" : `${type === "forget-password" ? "Reset Password" : null}`}`}
                     </button>
                 </div>
-                <div className=' h-40 flex flex-col justify-between'>
+            </form>
+            <div className=' h-40 flex flex-col justify-between'>
 
-                    <fieldset className='text-center border-t-2 border-slate-500 '>
-                        <legend className='px-2 text-slate-500'>{type === "sign-in" ? "Or Login with" : "Or Sign Up with"}</legend>
-                    </fieldset>
+                <fieldset className='text-center border-t-2 border-slate-500 '>
+                    <legend className='px-2 text-slate-500'>{type === "sign-in" ? "Or Login with" : `${type === "forget-password" ? "Or Login with" : "Or Sign Up with"}`}</legend>
+                </fieldset>
 
-                    <div className='flex w-full justify-between  gap-4 '>
-                        <button className='button-style-platforms '><span><GoogleSvg w={20} h={20} /></span><span className=''>Google</span></button>
-                        <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className=''>Facebook</span></button>
-                    </div>
+                <div className='flex w-full justify-between  gap-4 '>
+                    <button className='button-style-platforms '><span><GoogleSvg w={20} h={20} /></span><span className=''>Google</span></button>
+                    <button className='button-style-platforms'><span><FacebookSvg w={20} h={20} /></span><span className=''>Facebook</span></button>
+                </div>
 
-                    <div className=''>
-                        {type === "sign-in" ? <p className='text-slate-500'>Don't have an account? <Link href="/sign-up"><span className='text-lime-500'>Register</span></Link></p> : <p className='text-slate-500'>Already have an account? <Link href="/sign-in"><span className='text-lime-500'>SignIn</span></Link></p>}
-                    </div>
+                <div className=''>
+                    {type === "sign-in" ? <p className='text-slate-500'>Don't have an account? <Link href="/sign-up"><span className='text-lime-500'>Register</span></Link></p> : <p className='text-slate-500'>Already have an account? <Link href="/sign-in"><span className='text-lime-500'>SignIn</span></Link></p>}
                 </div>
             </div>
+        </div>
 
-        </form>
+
     )
 }
 

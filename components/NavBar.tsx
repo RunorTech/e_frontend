@@ -1,5 +1,5 @@
-
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import styles from "@/components/index.module.css"
 import { RiSearch2Line } from 'react-icons/ri'
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -14,8 +14,9 @@ export const HomeLogo = ({ w, h }: Size) => {
 }
 
 const NavBar = () => {
-  
 
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMenu = () => setIsOpen(!isOpen);
     return (
         <header className={`${styles.glassmorphisim} h-full p-2  shadow-md shadow-neutral-500 relative `}>
             <nav>
@@ -24,8 +25,10 @@ const NavBar = () => {
                         <div className='flex items-center gap-1'>
                             <HomeLogo w={40} h={40} /><span>WeCOMMERCE</span>
                         </div>
-                        <div className='text-2xl'>
-                          <GiHamburgerMenu/>
+                        <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                     <div className=" flex items-center w-full justify-between max-w-sm border rounded-md focus-within:shadow-md focus-within:shadow-neutral-400">
