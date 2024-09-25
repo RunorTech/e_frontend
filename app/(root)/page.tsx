@@ -2,6 +2,8 @@
 'use client'
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { usePageContext } from "../PageContext";
+import Hero from "@/components/Hero";
 
 
 
@@ -9,14 +11,21 @@ export default function Home() {
   const [getUserInfo, setGetUserInfo] = useState<any>();
   const [registeredUser, setRegisteredUser] = useState<boolean>(false);
   const [isLoggedIn, setisLoggedIn] = useState<boolean>(false);
+  const {APIURL} =  usePageContext();
+  const axiosInstance = axios.create({
+    baseURL: APIURL,
+    withCredentials: true, // Always send cookies with requests
+  });
 
   useEffect(() => {
-    initializeServer();
+    return () => {
+      initializeServer();// Cleanup if needed
+    };
   }, [])
   
   const initializeServer = async () => {
    try {
-    const response = await axios.get('http://localhost:8000');
+    const response = await axiosInstance.get('');
     setGetUserInfo(response.data);
    } catch (error) {
     console.log(error)
@@ -29,17 +38,18 @@ export default function Home() {
   },[getUserInfo])
 
   const checkreg = () => {
-    if(getUserInfo == "guest"){
+    if(getUserInfo?.user === "Guest"){
       setRegisteredUser(false);
     }else{
       setRegisteredUser(true);
+    
     }
   }
 
+  console.log(getUserInfo)
   return (
-    <>  <h1 className="">Welcome to home page {getUserInfo}</h1>
-      {isLoggedIn ? (<a href="/sign-in">SignOut</a>) : registeredUser ? <a href="/sign-in">signIn</a> : <a href="/sign-up">Register</a>}
-
+    <>  
+    <Hero/>
     </>
   );
 }

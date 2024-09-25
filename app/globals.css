@@ -49,6 +49,9 @@ body {
   .button-style-platforms{
     @apply flex justify-center items-center space-x-2 border w-full border-slate-500 rounded-md px-6 py-2
   }
+  .button-style-follow{
+    @apply flex justify-center items-center space-x-2 border w-full border-slate-500 rounded-md px-6 py-2 shadow-sm shadow-slate-100
+  }
 }
 
 @layer base {

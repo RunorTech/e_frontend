@@ -3,6 +3,10 @@
 import React, { createContext, useContext, ReactNode, useState } from 'react';
 
 interface PageContextType {
+    APIURL: string,
+    pageLoad: boolean,
+    setPageLoad: (pageLoad: boolean) => void
+    setAPIURL: (APIURL: string) => void;
     content: ReactNode | null;
     setContent: (content: ReactNode | null) => void;
 }
@@ -16,11 +20,13 @@ interface PageProviderProps {
 // Create a provider component
 export const PageProvider: React.FC<PageProviderProps> = ({ children }) => {
     const [content, setContent] = useState<ReactNode | null>(<div>Loading...</div>);
+    const [APIURL, setAPIURL] = useState<string>('http://localhost:8000/api')
+    const [pageLoad, setPageLoad] = useState(false)
 
   
     return (
-      <PageContext.Provider value={{ content, setContent }}>
-        {children}
+      <PageContext.Provider value={{ content, pageLoad, setPageLoad, setContent, APIURL, setAPIURL}}>
+        {pageLoad? <div>loading</div> : children }
       </PageContext.Provider>
     );
   };

@@ -1,8 +1,9 @@
 'use client'
 import React, { useState } from 'react'
 import styles from "@/components/index.module.css"
-import { RiSearch2Line } from 'react-icons/ri'
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { IoMdSearch } from "react-icons/io";
+import { CiMenuFries } from "react-icons/ci";
+import { IoFastFoodOutline } from "react-icons/io5";
 export const HomeLogo = ({ w, h }: Size) => {
     return (
         <>
@@ -16,28 +17,27 @@ export const HomeLogo = ({ w, h }: Size) => {
 const NavBar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const toggleSearch = () => {
+        setIsOpen(isOpen);
+      
+    }
     return (
-        <header className={`${styles.glassmorphisim} h-full p-2  shadow-md shadow-neutral-500 relative `}>
+        <header className={`${styles.glassmorphisim} h-10 w-full p-2 z-50 shadow-md shadow-neutral-500 fixed `}>
             <nav>
                 <div id="mobile-nav">
-                    <div className='flex justify-between items-center'>
-                        <div className='flex items-center gap-1'>
-                            <HomeLogo w={40} h={40} /><span>WeCOMMERCE</span>
+                    <div className='flex items-center justify-between'>
+                        <div className=' flex items-center ' >
+                            <div onClick={toggleSearch} className='text-xl '><IoMdSearch /></div>
+                            <div className={`${isOpen? "w-[calc(100%-70px)] sm:w-80" : "w-0"} rounded-sm bg-lime-100 absolute left-8`}><input className={`${isOpen? "" : ""}bg-transparent text-black w-full px-2 text-sm  outline-none`} type="text" /></div>
                         </div>
-                        <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <div className='flex items-center gap-2 '>
+                          <div className='text-2xl'>
+                          <IoFastFoodOutline/>
+                          </div>
+                            <div className='font-bold'>BULKFOOD</div>
                         </div>
+                        <div className='text-xl  '><CiMenuFries /></div>
                     </div>
-                    <div className=" flex items-center w-full justify-between max-w-sm border rounded-md focus-within:shadow-md focus-within:shadow-neutral-400">
-                        <div className="text-lg min-w-[50px] h-8 bg-lime-400 flex items-center justify-center rounded-1-md text-white">
-                            <RiSearch2Line />
-                        </div>
-                        <input type="text" placeholder="search items here" className="w-full outline-none bg-transparent  pl-2" />
-                    </div>
-
                 </div>
             </nav>
         </header>

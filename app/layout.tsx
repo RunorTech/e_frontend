@@ -1,6 +1,8 @@
 export const dynamic = 'force-dynamic'
-import type { Metadata, Viewport  } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 import { PageProvider } from "./PageContext";
 
@@ -35,6 +37,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <PageProvider>
           {children}
+          <ToastContainer />
         </PageProvider>
       </body>
     </html>

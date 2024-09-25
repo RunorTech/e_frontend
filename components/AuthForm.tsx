@@ -1,8 +1,11 @@
 'use client'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { Input } from './ui/input'
 import Link from 'next/link'
 import axios from 'axios'
+import { usePageContext } from '@/app/PageContext';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation'
 
 export const FacebookSvg = ({ w, h }: Size) => {
     return (
@@ -30,9 +33,9 @@ const AuthForm = ({ type }: { type: string }) => {
         password: "",
         confirmPassword: ""
     });
-
     const { email, password, confirmPassword } = formData;
-
+    const { APIURL } = usePageContext();
+    const router = useRouter();
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
@@ -47,16 +50,40 @@ const AuthForm = ({ type }: { type: string }) => {
 
         switch (type) {
             case "sign-in":
-                console.log("sign-in")
+                try {
+                    const response = await axios.post(`${APIURL}/sign-in`, { formData }, {
+                        withCredentials: true,
+                    });
+                    console.log(response);
+                    if (response.data.status === 'ok') {
+                        toast(response.data.message)
+                        router.push('/'); 
+                    } else {
+                        toast(response.data.message)
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
                 break;
             case "sign-up":
-               try {
-                const stringifyFormData = JSON.stringify(formData)
-                const response = await axios.post('http://localhost:8000/sign-up', stringifyFormData);
-                console.log(response);
-               } catch (error) {
-                console.log(error);
-               }
+                try {
+                    if (password === confirmPassword) {
+                        const response = await axios.post(`${APIURL}/sign-up`, { formData }, {
+                            withCredentials: true,
+                        });
+                        console.log(response);
+                        if (response.data.status === 'ok') {
+                            toast(response.data.message)
+                            router.push('/sign-in'); 
+                        } else {
+                            toast(response.data.message)
+                        }
+                    } else {
+                        toast("Password does'nt match");
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
                 break;
             case "forget-password":
                 console.log("forget-password")
@@ -76,7 +103,7 @@ const AuthForm = ({ type }: { type: string }) => {
                         <Input value={email} label='Email' onChange={handleOnChange} required type="email" name="email" placeholder="Enter your email" />
                         <Input value={password} label='Password' onChange={handleOnChange} required type="password" name="password" placeholder="Enter your password" />
                         {type === "sign-up" ? <Input value={confirmPassword} label='Confirm Password' onChange={handleOnChange} required type="password" name="confirmPassword" placeholder="Confirm your password" />
-                         : type ===  "forget-password" ? <Input value={confirmPassword} label='Confirm New Password' onChange={handleOnChange} required type="password" name="confirmPassword" placeholder="Confirm your new password" /> : null}
+                            : type === "forget-password" ? <Input value={confirmPassword} label='Confirm New Password' onChange={handleOnChange} required type="password" name="confirmPassword" placeholder="Confirm your new password" /> : null}
                         {/*  */}
                     </div>
 
