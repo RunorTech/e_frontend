@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css/bundle';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { foodData } from '@/constant/foodCard'
+import { foodData } from '@/constant/foodCard';
 import Image from 'next/image';
 
 
@@ -85,28 +85,5 @@ const FoodCard = () => {
     )
 }
 
-export default FoodCard
-
-
-
- // breakpoints={{
-
-            //     810: {
-            //         spaceBetween: 174,
-            //         slidesPerView: 3,
-            //     },
-            //     480: {
-            //         slidesPerView: 2,
-            //         spaceBetween: 170
-            //     },
-            //     320: {
-            //         slidesPerView: 'auto',
-            //         centeredSlides: true,
-            //         spaceBetween: 30
-            //     },
-            //     // when window width is >= 480px
-
-
-            // }}
-      
+export default FoodCard;
             
