@@ -6,7 +6,6 @@
     .backgroundImgHero{
         background-image: url("https://plus.unsplash.com/premium_photo-1670740967011-86730910a2e5?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8fDA%3D");
         background-repeat: no-repeat;
-        background-position: right top;
         background-attachment: fixed;
-        background-size: contain;
+        background-size: cover;
     }
