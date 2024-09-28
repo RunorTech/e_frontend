@@ -4,6 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { usePageContext } from "../PageContext";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Delicacies from "@/components/Delicacies";
 
 
 
@@ -50,6 +52,8 @@ export default function Home() {
   return (
     <>  
     <Hero/>
+    <About/>
+    <Delicacies/>
     </>
   );
 }
