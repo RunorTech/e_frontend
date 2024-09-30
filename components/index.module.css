@@ -9,3 +9,19 @@
         background-attachment: fixed;
         background-size: cover;
     }
+    @media (prefers-reduced-motion){
+        .hideElement{
+            transition: none;
+        }
+    }
+    .hideElement{
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(50%);
+        transition: all 700ms;
+    }
+    .show{
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }

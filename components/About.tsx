@@ -2,27 +2,60 @@
 import React, { useState } from 'react'
 import aboutImg from '@/app/assets/about.jpg'
 import Image from 'next/image';
+import styles from "@/components/index.module.css"
 
 const About = () => {
     const [openMore, setOpenMore] = useState(false);
     const showMore = () => {
         setOpenMore(!openMore)
     }
+    // const options: IntersectionObserverInit = {
+    //     root: document.querySelector("#about"),
+    //     rootMargin: "0px",
+    //     threshold: 1.0,
+    // };
+
+    // const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+    //     entries.forEach((entry: IntersectionObserverEntry) => {
+    //         if (entry.isIntersecting) {
+    //             let elem = entry.target;
+    //             console.log("intersection in",entries);
+    //         }else{
+    //             console.log("intersection out",entries);
+    //         }
+    //     });
+    // };
+
+    // const observer: IntersectionObserver = new IntersectionObserver(callback, options);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+               entry.target.classList.add(`${styles.show}`)
+            }else{
+             entry.target.classList.remove(`${styles.show}`)
+            }
+        });
+    });
+
+    const aboutDiv = document.querySelectorAll(`.${styles.hideElement}`);
+    aboutDiv.forEach((el) => { observer.observe(el); console.log("el", el)})
+
     return (
-        <section id="about" className='bg-white text-black py-4'>
+        <section id="about" className={` bg-white text-black py-4`}>
             <div className='flex justify-center'>
                 <div className='container '>
-                    <h2 className='text-4xl  font-bold text-center mb-4'>About Us</h2>
+                    <h2 className={`${styles.hideElement} text-4xl  font-bold text-center mb-4`}>About Us</h2>
                     <div className='flex  flex-wrap justify-center items-center p-3 gap-10 '>
-                        <div className='w-96 shadow-lg shadow-slate-200 '>
+                        <div className={` ${styles.hideElement} w-96 shadow-lg shadow-slate-200 `}>
                             <Image className='rounded-3xl' src={aboutImg} alt="about image" />
                         </div>
-                        <div className='w-[34rem]'>
-                            <p>
+                        <div className={`${styles.hideElement} w-[34rem] transition-all`}>
+                            <p >
                                 Bulk is an innovative food networking business in Lagos, Nigeria, offering key services that connects
                                 food businesses which includes restaurants and local chefs with users / customers all across the globe.
                             </p>
-                            <p className={`${openMore ? "block" : "hidden overflow-hidden"} mt-2 grid gap-2`}>
+                            <p className={`${openMore ? "block" : "hidden overflow-hidden"} mt-2 grid gap-2 `}>
                                 <span>
                                     With a well-tailored application, bulk provides the option for customers to order food online from any
                                     restaurant of their choice and get the food delivered to their doorstep in minutes by exploring the
@@ -39,8 +72,8 @@ const About = () => {
                                 </span>
 
                             </p>
-                            <div className='w-full flex justify-end'>
-                            <button onClick={showMore} className='bg-lime-500 rounded-md my-4 text-slate-200 px-3 py-2 font-semibold'>{openMore ? "Show Less" : "Show More"}</button>
+                            <div className='w-full flex justify-end transition-all'>
+                                <button onClick={showMore} className='bg-lime-500 rounded-md my-4 text-slate-200 px-3 py-2 font-semibold'>{openMore ? "Show Less" : "Show More"}</button>
                             </div>
                         </div>
 
@@ -52,3 +85,14 @@ const About = () => {
 }
 
 export default About
+
+
+// Each entry describes an intersection change for one observed
+// target element:
+//   entry.boundingClientRect
+//   entry.intersectionRatio
+//   entry.intersectionRect
+//   entry.isIntersecting
+//   entry.rootBounds
+//   entry.target
+//   entry.time

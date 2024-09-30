@@ -5,6 +5,7 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { FaTwitter } from "react-icons/fa";
 import { FacebookSvg } from './AuthForm';
 
+
 const Hero = () => {
   return (
     <section className={`${styles.backgroundImgHero} w-full h-screen `}>
