@@ -38,9 +38,10 @@ const FoodCard = () => {
         spaceBetween={5}
         pagination={{
           clickable: true,
+           dynamicBullets: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="h-[32rem]"
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
     >
@@ -65,16 +66,16 @@ const FoodCard = () => {
                             <p>ingredient:</p>
                             <span className='text-end mb-6'>
                                 <ul>
-                                <li>flour</li>
-                                <li>flour</li>
-                                <li>flour</li>
-                                <li>flour</li>
+                                <li>####</li>
+                                <li>####</li>
+                                <li>####</li>
+                                <li>####</li>
                                 </ul>
                             </span>
                         </div>
                        </div>
                         <div className='flex justify-end'>
-                            <button className='rounded-lg bg-lime-500 px-3 py-2 font-semibold'>Place Order</button>
+                            <button className='rounded-lg bg-lime-500 px-3 text-white py-2 my-3 font-semibold'>Place Order</button>
                         </div>
                    </div>
                 </div>

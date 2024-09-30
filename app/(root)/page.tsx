@@ -6,6 +6,7 @@ import { usePageContext } from "../PageContext";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Delicacies from "@/components/Delicacies";
+import Chefs from "@/components/Chefs";
 
 
 
@@ -54,6 +55,7 @@ export default function Home() {
     <Hero/>
     <About/>
     <Delicacies/>
+    <Chefs/>
     </>
   );
 };

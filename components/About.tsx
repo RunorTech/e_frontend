@@ -9,27 +9,9 @@ const About = () => {
     const showMore = () => {
         setOpenMore(!openMore)
     }
-    // const options: IntersectionObserverInit = {
-    //     root: document.querySelector("#about"),
-    //     rootMargin: "0px",
-    //     threshold: 1.0,
-    // };
-
-    // const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-    //     entries.forEach((entry: IntersectionObserverEntry) => {
-    //         if (entry.isIntersecting) {
-    //             let elem = entry.target;
-    //             console.log("intersection in",entries);
-    //         }else{
-    //             console.log("intersection out",entries);
-    //         }
-    //     });
-    // };
-
-    // const observer: IntersectionObserver = new IntersectionObserver(callback, options);
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+ 
+    const observer: IntersectionObserver  = new IntersectionObserver((entries : IntersectionObserverEntry[]) => {
+        entries.forEach((entry : IntersectionObserverEntry) => {
             if (entry.isIntersecting) {
                entry.target.classList.add(`${styles.show}`)
             }
@@ -83,14 +65,3 @@ const About = () => {
 }
 
 export default About
-
-
-// Each entry describes an intersection change for one observed
-// target element:
-//   entry.boundingClientRect
-//   entry.intersectionRatio
-//   entry.intersectionRect
-//   entry.isIntersecting
-//   entry.rootBounds
-//   entry.target
-//   entry.time

@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import styles from "@/components/index.module.css"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -18,3 +19,4 @@ export function trackScrollPositionY(callback: (scrollY: number) => void): void 
     //     }
     //     // You can now store `scrollX` in another variable or perform an action
     // });
+    
