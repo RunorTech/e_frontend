@@ -32,8 +32,6 @@ const About = () => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                entry.target.classList.add(`${styles.show}`)
-            }else{
-             entry.target.classList.remove(`${styles.show}`)
             }
         });
     });
